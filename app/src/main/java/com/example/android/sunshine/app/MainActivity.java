@@ -15,6 +15,7 @@
  */
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
+    private static final String TAG="MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent settingIntent=new Intent(this,SettingsActivity.class);
+            startActivity(settingIntent);
         }
 
         return super.onOptionsItemSelected(item);
