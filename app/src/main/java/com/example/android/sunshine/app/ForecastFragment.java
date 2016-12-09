@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -97,6 +99,15 @@ public class ForecastFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String forecast=mForecastAdapter.getItem(position);
+                Intent intent=new Intent(getActivity(),DetailActivity.class).putExtra(Intent.EXTRA_TEXT,forecast);
+                startActivity(intent);
+            }
+        });
+
 
         return rootView;
     }
@@ -112,6 +123,8 @@ public class ForecastFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String[] result) {
+
+
             if(result!=null){
                 mForecastAdapter.clear();
                 for(String dayForecastStr:result){
@@ -123,7 +136,7 @@ public class ForecastFragment extends Fragment {
         private String formatHighLows(double high, double low) {
             long roundHigh = Math.round(high);
             long roundLow = Math.round(low);
-            String highAndLow = roundHigh + "/" + roundLow;
+            String highAndLow = roundLow + "/" + roundHigh;
             return highAndLow;
         }
 
@@ -154,7 +167,6 @@ public class ForecastFragment extends Fragment {
                 long dateTime;
                 dateTime=dayTime.setJulianDay(julianStartDay+i);
                 day=getReadableDateString(dateTime);
-                Log.i(TAG_LOG, "dateTime:"+dateTime);
 
                 JSONObject dayForecast = weatherArray.getJSONObject(i);
 
@@ -167,7 +179,7 @@ public class ForecastFragment extends Fragment {
 
                 highAndLow = formatHighLows(high, low);
 
-                resultStr[i] = day + " - " + description + " - " + highAndLow;
+                resultStr[i] = day + " - " + description + " - " + highAndLow;  //日期+天气+最低最高气温
             }
 
             return resultStr;
