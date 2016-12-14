@@ -1,9 +1,11 @@
 package com.example.android.sunshine.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -29,8 +31,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -60,10 +60,24 @@ public class ForecastFragment extends Fragment {
 
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            new FetchWeatherTask().execute("94043");
+            updateWeather();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void updateWeather() {
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        String location = PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getString(getString(R.string.pref_location_key), getString(R.string.pref_default_location_value));
+
+        weatherTask.execute(location);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
     }
 
     @Override
@@ -71,16 +85,16 @@ public class ForecastFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Create some dummy data for the ListView.  Here's a sample weekly forecast
-        String[] data = {
-                "Mon 6/23 - Sunny - 31/17",
-                "Tue 6/24 - Foggy - 21/8",
-                "Wed 6/25 - Cloudy - 22/17",
-                "Thurs 6/26 - Rainy - 18/11",
-                "Fri 6/27 - Foggy - 21/10",
-                "Sat 6/28 - Clear - 23/18",
-                "Sun 6/29 - Sunny - 20/7"
-        };
-        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+//        String[] data = {
+//                "Mon 6/23 - Sunny - 31/17",
+//                "Tue 6/24 - Foggy - 21/8",
+//                "Wed 6/25 - Cloudy - 22/17",
+//                "Thurs 6/26 - Rainy - 18/11",
+//                "Fri 6/27 - Foggy - 21/10",
+//                "Sat 6/28 - Clear - 23/18",
+//                "Sun 6/29 - Sunny - 20/7"
+//        };
+//        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
 
 
         // Now that we have some dummy forecast data, create an ArrayAdapter.
@@ -91,7 +105,7 @@ public class ForecastFragment extends Fragment {
                         getActivity(), // The current context (this activity)
                         R.layout.list_item_forecast, // The name of the layout ID.
                         R.id.list_item_forecast_textview, // The ID of the textview to populate.
-                        weekForecast);
+                        new ArrayList<String>());
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -102,8 +116,8 @@ public class ForecastFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String forecast=mForecastAdapter.getItem(position);
-                Intent intent=new Intent(getActivity(),DetailActivity.class).putExtra(Intent.EXTRA_TEXT,forecast);
+                String forecast = mForecastAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
                 startActivity(intent);
             }
         });
@@ -125,15 +139,23 @@ public class ForecastFragment extends Fragment {
         protected void onPostExecute(String[] result) {
 
 
-            if(result!=null){
+            if (result != null) {
                 mForecastAdapter.clear();
-                for(String dayForecastStr:result){
+                for (String dayForecastStr : result) {
                     mForecastAdapter.add(dayForecastStr);
                 }
             }
         }
 
-        private String formatHighLows(double high, double low) {
+        private String formatHighLows(double high, double low, String unitType) {
+            //判断温度格式
+            if (unitType.equals(getString(R.string.pre_units_imperial))) {
+                high = (high * 1.8) + 32; //Metric change to Imperial
+                low = (low * 2) + 32;
+            } else if (!unitType.equals(getString(R.string.pre_units_metric))) {
+                Log.d(TAG_LOG, "Unit type not found "+unitType);
+            }
+
             long roundHigh = Math.round(high);
             long roundLow = Math.round(low);
             String highAndLow = roundLow + "/" + roundHigh;
@@ -152,21 +174,26 @@ public class ForecastFragment extends Fragment {
             Time dayTime = new Time();
             dayTime.setToNow();
 
-            int julianStartDay=Time.getJulianDay(System.currentTimeMillis(),dayTime.gmtoff);
-            dayTime=new Time();
+            int julianStartDay = Time.getJulianDay(System.currentTimeMillis(), dayTime.gmtoff);
+            dayTime = new Time();
 
             JSONObject forecastJson = new JSONObject(forecastJsonStr);
             JSONArray weatherArray = forecastJson.getJSONArray(OWN_LIST);
 
             String[] resultStr = new String[numDyas];
+
+            //update Temperature Units
+            SharedPreferences sharedPre = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String unitType = sharedPre.getString(getString(R.string.pref_units_key), getString(R.string.pre_units_metric));
+
             for (int i = 0; i < weatherArray.length(); i++) {
                 String day;
                 String description;
                 String highAndLow;
 
                 long dateTime;
-                dateTime=dayTime.setJulianDay(julianStartDay+i);
-                day=getReadableDateString(dateTime);
+                dateTime = dayTime.setJulianDay(julianStartDay + i);
+                day = getReadableDateString(dateTime);
 
                 JSONObject dayForecast = weatherArray.getJSONObject(i);
 
@@ -177,7 +204,7 @@ public class ForecastFragment extends Fragment {
                 double high = temperatureObj.getDouble(OWM_MAX);
                 double low = temperatureObj.getDouble(OWM_MIN);
 
-                highAndLow = formatHighLows(high, low);
+                highAndLow = formatHighLows(high, low, unitType);
 
                 resultStr[i] = day + " - " + description + " - " + highAndLow;  //日期+天气+最低最高气温
             }
@@ -275,7 +302,7 @@ public class ForecastFragment extends Fragment {
                 }
             }
             try {
-                return getWeatherDataFromJson(forecastJsonStr,numDays);
+                return getWeatherDataFromJson(forecastJsonStr, numDays);
             } catch (JSONException e) {
                 Log.e(TAG_LOG, e.getMessage(), e);
                 e.printStackTrace();

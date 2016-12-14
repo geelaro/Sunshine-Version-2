@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private static final String TAG="MainActivity";
+    private static final String TAG_LOG=MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +60,12 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             Intent settingIntent=new Intent(this,SettingsActivity.class);
             startActivity(settingIntent);
+            return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

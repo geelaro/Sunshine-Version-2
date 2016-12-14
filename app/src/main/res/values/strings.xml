@@ -9,29 +9,33 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_settings">Settings</string>
 
+    <string name="action_map">Map</string>
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
+    <!-- Location settings -->
+    <string name="pref_location_title">Location</string>
+    <string name="pref_location_key" translatable="false">location</string>
+    <string name="pref_default_location_value">94043</string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <!-- Temperature Units settings -->
+    <string name="pref_units_label">Temperature Units </string>
+    <string name="pref_units_key">units</string>
+    <string name="pre_units_metric">metric</string>
+    <string name="pre_units_imperial">imperial</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
+    <string-array name="pref_units_options">
+        <item>Metric </item>
+        <item>Imperial </item>
+
     </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
+    <string-array name="pref_units_values">
+        <item>metric</item>
+        <item>imperial</item>
+
     </string-array>
 
     <!-- Example settings for Data & Sync -->
