@@ -158,8 +158,7 @@ public class ForecastFragment extends Fragment {
 
             long roundHigh = Math.round(high);
             long roundLow = Math.round(low);
-            String highAndLow = roundLow + "/" + roundHigh;
-            return highAndLow;
+            return roundLow + "/" + roundHigh;
         }
 
         private String[] getWeatherDataFromJson(String forecastJsonStr, int numDyas) throws JSONException {

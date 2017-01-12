@@ -1,0 +1,75 @@
+AGGREGATED OVER LAST 24 HOURS:
+Per-Package Stats:
+  * com.example.android.sunshine.app / u0a319:
+      * com.example.android.sunshine.app / u0a319:
+            (Cached): 6.7% (20MB-21MB-21MB/18MB-19MB-19MB over 5)
+  * com.example.android.sunshine.app / u0a320:
+      * com.example.android.sunshine.app / u0a320:
+               TOTAL: 18% (9.3MB-15MB-23MB/8.1MB-13MB-22MB over 148)
+                 Top: 18% (9.3MB-15MB-23MB/8.1MB-13MB-22MB over 148)
+          (Last Act): 72% (11MB-12MB-14MB/9.2MB-11MB-13MB over 47)
+            (Cached): 0.26% (11MB-13MB-15MB/9.1MB-11MB-13MB over 2)
+
+Summary:
+  * com.example.android.sunshine.app / u0a320:
+           TOTAL: 18% (9.3MB-15MB-23MB/8.1MB-13MB-22MB over 148)
+             Top: 18% (9.3MB-15MB-23MB/8.1MB-13MB-22MB over 148)
+      (Last Act): 72% (11MB-12MB-14MB/9.2MB-11MB-13MB over 47)
+        (Cached): 0.26% (11MB-13MB-15MB/9.1MB-11MB-13MB over 2)
+  * com.example.android.sunshine.app / u0a319:
+        (Cached): 6.7% (20MB-21MB-21MB/18MB-19MB-19MB over 5)
+
+Run time Stats:
+  SOff/Norm: +22h11m9s303ms
+       Low : +1h12m17s132ms
+  SOn /Norm: +47m39s723ms
+      TOTAL: +1d0h11m6s158ms
+
+          Start time: 2016-12-14 14:18:43
+  Total elapsed time: +1d0h11m6s157ms (partial) libdvm.so chromeview
+
+AGGREGATED OVER LAST 3 HOURS:
+Per-Package Stats:
+  * com.example.android.sunshine.app / u0a320:
+      * com.example.android.sunshine.app / u0a320:
+               TOTAL: 62% (11MB-16MB-20MB/9.3MB-15MB-18MB over 64)
+                 Top: 62% (11MB-16MB-20MB/9.3MB-15MB-18MB over 64)
+          (Last Act): 36% (11MB-13MB-14MB/10.0MB-11MB-13MB over 5)
+            (Cached): 0.31% (11MB-11MB-11MB/9.1MB-9.1MB-9.1MB over 1)
+
+Summary:
+  * com.example.android.sunshine.app / u0a320:
+           TOTAL: 62% (11MB-16MB-20MB/9.3MB-15MB-18MB over 64)
+             Top: 62% (11MB-16MB-20MB/9.3MB-15MB-18MB over 64)
+      (Last Act): 36% (11MB-13MB-14MB/10.0MB-11MB-13MB over 5)
+        (Cached): 0.31% (11MB-11MB-11MB/9.1MB-9.1MB-9.1MB over 1)
+
+Run time Stats:
+  SOff/Norm: +2h54m45s332ms
+  SOn /Norm: +16m3s686ms
+      TOTAL: +3h10m49s18ms
+
+          Start time: 2016-12-15 11:19:00
+  Total elapsed time: +3h10m49s18ms (partial) libdvm.so chromeview
+
+CURRENT STATS:
+Per-Package Stats:
+  * com.example.android.sunshine.app / u0a320:
+      * com.example.android.sunshine.app / u0a320:
+               TOTAL: 17% (17MB-17MB-17MB/16MB-16MB-16MB over 2)
+                 Top: 17% (17MB-17MB-17MB/16MB-16MB-16MB over 2)
+          (Last Act): 83% (14MB-14MB-14MB/13MB-13MB-13MB over 2)
+
+Summary:
+  * com.example.android.sunshine.app / u0a320:
+           TOTAL: 17% (17MB-17MB-17MB/16MB-16MB-16MB over 2)
+             Top: 17% (17MB-17MB-17MB/16MB-16MB-16MB over 2)
+      (Last Act): 83% (14MB-14MB-14MB/13MB-13MB-13MB over 2)
+
+Run time Stats:
+  SOff/Norm: +8m58s856ms (running)
+  SOn /Norm: +1m16s588ms
+      TOTAL: +10m15s444ms
+
+          Start time: 2016-12-15 14:19:34
+  Total elapsed time: +10m15s858ms (partial) libdvm.so chromeview

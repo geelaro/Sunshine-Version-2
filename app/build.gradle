@@ -6,11 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.android.sunshine.app"
-        minSdkVersion 14
+        minSdkVersion 10
         targetSdkVersion 21
-        versionCode 3
-        versionName "1.2"
-        vectorDrawables.useSupportLibrary = true
+        versionCode 1
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -25,7 +24,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.google.android.gms:play-services-appindexing:9.6.1'
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:21.0.2'
+    testCompile 'junit:junit:4.12'
+
 }

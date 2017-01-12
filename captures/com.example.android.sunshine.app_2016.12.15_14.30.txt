@@ -1,0 +1,87 @@
+Applications Graphics Acceleration Info:
+Uptime: 627631542 Realtime: 1307174540
+
+** Graphics info for pid 5257 [com.example.android.sunshine.app] **
+
+Recent DisplayList operations
+                DrawText
+                RestoreToCount
+              DrawDisplayList
+                Save
+                ClipRect
+                Translate
+                DrawText
+                RestoreToCount
+              DrawDisplayList
+                Save
+                ClipRect
+                Translate
+                DrawText
+                RestoreToCount
+              DrawDisplayList
+                Save
+                ClipRect
+                Translate
+                DrawText
+                RestoreToCount
+            RestoreToCount
+        DrawPatch
+      DrawDisplayList
+        DrawRect
+        DrawDisplayList
+          DrawDisplayList
+            Save
+            ClipRect
+            DrawText
+            RestoreToCount
+          DrawDisplayList
+            DrawDisplayList
+              Save
+              Translate
+              ConcatMatrix
+              SetupColorFilter
+              DrawBitmap
+              ResetColorFilter
+              RestoreToCount
+      DrawPatch
+  RestoreToCount
+DrawRect
+DrawRect
+multiDraw
+  DrawPatch
+DrawPatch
+multiDraw
+  DrawText
+DrawText
+DrawBitmap
+
+Caches:
+Current memory usage / total memory usage (bytes):
+  TextureCache           116496 / 75497472
+  LayerCache                  0 / 50331648
+  RenderBufferCache           0 /  8388608
+  GradientCache               0 /  1048576
+  PathCache                   0 / 33554432
+  TextDropShadowCache         0 /  6291456
+  PatchCache               3136 /   131072
+  FontRenderer 0 A8     1048576 /  1048576
+  FontRenderer 0 RGBA         0 /        0
+  FontRenderer 0 total  1048576 /  1048576
+Other:
+  FboCache                    0 /       16
+Total memory usage:
+  1168208 bytes, 1.11 MB
+
+Profile data in ms:
+
+	com.example.android.sunshine.app/com.example.android.sunshine.app.MainActivity/android.view.ViewRootImpl@43351bd8
+View hierarchy:
+
+  com.example.android.sunshine.app/com.example.android.sunshine.app.MainActivity/android.view.ViewRootImpl@43351bd8
+  22 views, 4.52 kB of display lists, 22 frames rendered
+
+
+Total ViewRootImpl: 1
+Total Views:        22
+Total DisplayList:  4.52 kB
+
