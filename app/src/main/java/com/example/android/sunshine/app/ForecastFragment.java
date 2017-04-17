@@ -213,6 +213,7 @@ public class ForecastFragment extends Fragment {
                     getString(R.string.pref_units_key),
                     getString(R.string.pref_units_metric));
 
+
             for(int i = 0; i < weatherArray.length(); i++) {
                 // For now, using the format "Day, description, hi/low"
                 String day;
@@ -287,6 +288,7 @@ public class ForecastFragment extends Fragment {
                         .build();
 
                 URL url = new URL(builtUri.toString());
+                Log.d(LOG_TAG, "URL:"+url);
 
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
