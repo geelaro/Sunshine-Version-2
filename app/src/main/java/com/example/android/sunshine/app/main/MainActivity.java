@@ -13,31 +13,72 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.sunshine.app.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity {
+import com.example.android.sunshine.app.ForecastFragment;
+import com.example.android.sunshine.app.R;
+import com.example.android.sunshine.app.SettingsActivity;
+import com.example.android.sunshine.app.main.presenter.MainPresenter;
+import com.example.android.sunshine.app.main.presenter.MainPresenterImpl;
+import com.example.android.sunshine.app.main.view.MainView;
+
+public class MainActivity extends AppCompatActivity implements MainView {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private NavigationView mNavigationView;
+    private MainPresenter mMainPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ForecastFragment())
-                    .commit();
-        }
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
+                R.string.drawer_close);
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
+        setupDrawerContent(mNavigationView);
+
+        mMainPresenter=new MainPresenterImpl(this);
+
+        switch2Weather();
+
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        mMainPresenter.switchNavigation(menuItem.getItemId());
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
     }
 
     @Override
@@ -89,5 +130,28 @@ public class MainActivity extends ActionBarActivity {
         } else {
             Log.d(LOG_TAG, "Couldn't call " + location + ", no receiving apps installed!");
         }
+    }
+
+    @Override
+    public void switch2Weather() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new ForecastFragment())
+                .commit();
+        mToolbar.setTitle(R.string.navigation_weather);
+    }
+
+    @Override
+    public void switch2News() {
+
+    }
+
+    @Override
+    public void switch2Images() {
+
+    }
+
+    @Override
+    public void switch2About() {
+
     }
 }

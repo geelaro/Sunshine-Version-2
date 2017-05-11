@@ -34,6 +34,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.android.sunshine.app.main.DetailActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

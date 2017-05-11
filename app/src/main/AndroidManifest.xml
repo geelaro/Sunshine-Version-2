@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,26 +18,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
- 
-
         <activity
-            android:name=".DetailActivity"
+            android:name=".main.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".main.MainActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".main.MainActivity" />
         </activity>
-        
+
     </application>
 
 </manifest>
