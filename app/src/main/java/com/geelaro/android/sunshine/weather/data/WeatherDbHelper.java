@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.geelaro.android.sunshine.data;
+package com.geelaro.android.sunshine.weather.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.geelaro.android.sunshine.data.WeatherContract.LocationEntry;
-import com.geelaro.android.sunshine.data.WeatherContract.WeatherEntry;
+import com.geelaro.android.sunshine.weather.data.WeatherContract.LocationEntry;
+import com.geelaro.android.sunshine.weather.data.WeatherContract.WeatherEntry;
 
 /**
  * Manages a local database for weather data.

@@ -1,4 +1,4 @@
-package com.geelaro.android.sunshine.data;
+package com.geelaro.android.sunshine.weather.data;
 
 import android.content.ContentValues;
 import android.content.Context;

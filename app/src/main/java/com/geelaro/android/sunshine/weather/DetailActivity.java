@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.geelaro.android.sunshine.main;
+package com.geelaro.android.sunshine.weather;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +32,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.geelaro.android.sunshine.app.R;
-import com.geelaro.android.sunshine.SettingsActivity;
 
 public class DetailActivity extends ActionBarActivity {
 

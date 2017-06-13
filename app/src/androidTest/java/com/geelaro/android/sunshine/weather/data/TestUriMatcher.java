@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.geelaro.android.sunshine.data;
+package com.geelaro.android.sunshine.weather.data;
 
 import android.net.Uri;
 import android.test.AndroidTestCase;
 
-import com.geelaro.android.sunshine.data.WeatherContract;
+import com.geelaro.android.sunshine.weather.data.WeatherContract;
 
 /*
     Uncomment this class when you are ready to test your UriMatcher.  Note that this class utilizes

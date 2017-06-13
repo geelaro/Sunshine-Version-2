@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.geelaro.android.sunshine;
+package com.geelaro.android.sunshine.weather;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -27,7 +27,7 @@ import android.widget.ArrayAdapter;
 
 import com.geelaro.android.sunshine.app.BuildConfig;
 import com.geelaro.android.sunshine.app.R;
-import com.geelaro.android.sunshine.data.WeatherContract.WeatherEntry;
+import com.geelaro.android.sunshine.weather.data.WeatherContract.WeatherEntry;
 
 import org.json.JSONArray;
 import org.json.JSONException;

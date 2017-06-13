@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.geelaro.android.sunshine.data;
+package com.geelaro.android.sunshine.weather.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 
-import com.geelaro.android.sunshine.data.WeatherContract.LocationEntry;
-import com.geelaro.android.sunshine.data.WeatherContract.WeatherEntry;
+import com.geelaro.android.sunshine.weather.data.WeatherContract.LocationEntry;
+import com.geelaro.android.sunshine.weather.data.WeatherContract.WeatherEntry;
 
 /*
     Note: This is not a complete set of tests of the Sunshine ContentProvider, but it does test

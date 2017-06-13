@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.geelaro.android.sunshine;
+package com.geelaro.android.sunshine.weather;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +36,6 @@ import android.widget.ListView;
 
 import com.geelaro.android.sunshine.app.BuildConfig;
 import com.geelaro.android.sunshine.app.R;
-import com.geelaro.android.sunshine.main.DetailActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

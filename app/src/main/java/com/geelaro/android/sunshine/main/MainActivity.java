@@ -29,9 +29,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.geelaro.android.sunshine.ForecastFragment;
+import com.geelaro.android.sunshine.weather.ForecastFragment;
 import com.geelaro.android.sunshine.app.R;
-import com.geelaro.android.sunshine.SettingsActivity;
+import com.geelaro.android.sunshine.weather.SettingsActivity;
 import com.geelaro.android.sunshine.main.presenter.MainPresenter;
 import com.geelaro.android.sunshine.main.presenter.MainPresenterImpl;
 import com.geelaro.android.sunshine.main.view.MainView;
