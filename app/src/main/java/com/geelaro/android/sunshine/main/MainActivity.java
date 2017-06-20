@@ -29,7 +29,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.geelaro.android.sunshine.weather.ForecastFragment;
+import com.geelaro.android.sunshine.weather.WeatherFragment;
 import com.geelaro.android.sunshine.app.R;
 import com.geelaro.android.sunshine.weather.SettingsActivity;
 import com.geelaro.android.sunshine.main.presenter.MainPresenter;
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void switch2Weather() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new ForecastFragment())
+                .replace(R.id.container, new WeatherFragment())
                 .commit();
         mToolbar.setTitle(R.string.navigation_weather);
     }
